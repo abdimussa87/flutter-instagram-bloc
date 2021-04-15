@@ -1,0 +1,44 @@
+import 'package:flutter/material.dart';
+import 'package:instagram_bloc/screens/screens.dart';
+
+class CustomRouter {
+  static Route onGenerateRoute(RouteSettings settings) {
+    print('Route: ${settings.name}');
+    switch (settings.name) {
+      case '/':
+        return MaterialPageRoute(
+          // settings is for viewing the route in firebase analytics
+          settings: const RouteSettings(
+            name: '/',
+          ),
+          builder: (_) => const Scaffold(),
+        );
+      case SplashScreen.routeName:
+        return SplashScreen.route();
+      case LoginScreen.routeName:
+        return LoginScreen.route();
+      case SignupScreen.routeName:
+        return SignupScreen.route();
+      case NavScreen.routeName:
+        return NavScreen.route();
+      default:
+        return _errorRoute();
+    }
+  }
+
+  static Route _errorRoute() {
+    return MaterialPageRoute(
+      settings: const RouteSettings(name: '/error'),
+      builder: (_) => Scaffold(
+        appBar: AppBar(
+          title: Text('Error'),
+        ),
+        body: Center(
+          child: Text(
+            'Something went wrong...',
+          ),
+        ),
+      ),
+    );
+  }
+}
