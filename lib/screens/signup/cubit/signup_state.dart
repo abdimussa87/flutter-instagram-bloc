@@ -30,7 +30,7 @@ class SignupState extends Equatable {
   @override
   bool get stringify => true;
   @override
-  List<Object> get props => [username, email, password];
+  List<Object> get props => [username, email, password, failure, status];
 
   SignupState copyWith({
     String username,

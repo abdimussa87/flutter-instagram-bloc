@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:instagram_bloc/config/size_config.dart';
 import 'package:instagram_bloc/repositories/repositories.dart';
 import 'package:instagram_bloc/screens/signup/signup_screen.dart';
+import 'package:instagram_bloc/widgets/widgets.dart';
 
 import 'cubit/login_cubit.dart';
 
@@ -32,10 +33,11 @@ class LoginScreen extends StatelessWidget {
           listener: (context, state) {
             if (state.status == LoginStatus.error) {
               showDialog(
-                  context: context,
-                  builder: (context) => AlertDialog(
-                      title: Text('Error'),
-                      content: Text(state.failure.message)));
+                context: context,
+                builder: (context) => ErrorDialog(
+                  content: state.failure.message,
+                ),
+              );
             }
           },
           builder: (context, state) {
@@ -72,7 +74,7 @@ class LoginScreen extends StatelessWidget {
                               ),
                               onChanged: (value) => context
                                   .read<LoginCubit>()
-                                  .emailChanged(value),
+                                  .emailChanged(value.trim()),
                               validator: (value) => !value.contains('@')
                                   ? 'Please enter a valid email.'
                                   : null,

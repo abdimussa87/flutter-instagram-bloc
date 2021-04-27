@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_bloc/repositories/auth/auth_repository.dart';
 
 class NavScreen extends StatelessWidget {
   static const String routeName = '/nav';
