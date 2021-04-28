@@ -5,7 +5,6 @@ import 'package:instagram_bloc/enums/bottom_nav_item.dart';
 import 'package:instagram_bloc/screens/screens.dart';
 
 class TabNavigator extends StatelessWidget {
-  static const String tabNavigatorRoot = '/';
   final GlobalKey<NavigatorState> navigatorKey;
   final BottomNavItem item;
   const TabNavigator({
@@ -13,6 +12,9 @@ class TabNavigator extends StatelessWidget {
     @required this.navigatorKey,
     @required this.item,
   }) : super(key: key);
+
+  static const String tabNavigatorRoot = '/';
+
   @override
   Widget build(BuildContext context) {
     final routeBuilders = _routeBuilders();
