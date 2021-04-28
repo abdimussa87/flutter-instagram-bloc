@@ -7,7 +7,7 @@ import 'package:instagram_bloc/blocs/blocs.dart';
 import 'package:instagram_bloc/blocs/simple_bloc_observer.dart';
 import 'package:instagram_bloc/config/custom_router.dart';
 import 'package:instagram_bloc/config/size_config.dart';
-import 'package:instagram_bloc/repositories/auth/auth_repository.dart';
+import 'package:instagram_bloc/repositories/repositories.dart';
 import 'package:instagram_bloc/screens/screens.dart';
 
 void main() async {
@@ -29,6 +29,9 @@ class MyApp extends StatelessWidget {
           providers: [
             RepositoryProvider<AuthRepository>(
               create: (_) => AuthRepository(),
+            ),
+            RepositoryProvider<UserRepository>(
+              create: (_) => UserRepository(),
             ),
           ],
           child: MultiBlocProvider(
