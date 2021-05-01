@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:instagram_bloc/blocs/blocs.dart';
 import 'package:instagram_bloc/screens/profile/bloc/profile_bloc.dart';
 import 'package:instagram_bloc/widgets/widgets.dart';
+import 'widgets/widgets.dart';
 
 class ProfileScreen extends StatelessWidget {
   static const String routeName = '/profile';
@@ -46,10 +47,27 @@ class ProfileScreen extends StatelessWidget {
                       padding: const EdgeInsets.fromLTRB(24, 32, 23, 0),
                       child: Row(
                         children: [
-                         UserProfileImage(radius:40,profileImageUrl:state.user.profileImageUrl),
+                          UserProfileImage(
+                              radius: 40,
+                              profileImageUrl: state.user.profileImageUrl),
+                          ProfileStats(
+                            isCurrentUser: state.isCurrentUser,
+                            isFollowing: state.isFollowing,
+                            posts: 0, //state.posts.length,
+                            followers: state.user.followers,
+                            following: state.user.following,
+                          )
                         ],
                       ),
-                    )
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 30,
+                        vertical: 10,
+                      ),
+                      child: ProfileInfo(
+                          username: state.user.username, bio: state.user.bio),
+                    ),
                   ],
                 ),
               ),

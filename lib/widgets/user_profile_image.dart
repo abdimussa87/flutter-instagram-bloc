@@ -28,5 +28,14 @@ class UserProfileImage extends StatelessWidget {
     );
   }
 
-  Icon _noProfileIcon() {}
+  Icon _noProfileIcon() {
+    if (image == null && profileImageUrl.isEmpty) {
+      return Icon(
+        Icons.account_circle,
+        size: radius * 2,
+        color: Colors.grey[400],
+      );
+    }
+    return null;
+  }
 }
